@@ -302,7 +302,7 @@ function App(props) {
     //   artist: searchFormValue.artist.replace('/\s/', '%20')
     //  }
     //  )
-    history.push('/home/search')
+    history.push('/search')
     console.log(newSearch)
     props.fetchSuggestions(searchFormValue)
     console.log(props.favorites,'this is favorites')
@@ -330,31 +330,31 @@ function App(props) {
           onInputChange={onInputChange}
         
         />
-      </Route>
-      <Route exact path='/favorites/suggestions'>
+     </Route>
+      {/* <Route exact path='/favorites/suggestions'> 
            <Suggestions />
-      </Route>
-      <Route exact path='/favorites'>
+      </Route> */}
+      {/* <Route exact path='/favorites'>
            <Favorites
             values={formValues}
             onInputChange={onInputChange}
             favorite={favorite}
            />
-      </Route>
+      </Route> */}
       {/* <Route exact path='/home/search'>
           <DisplaySearched />
         </Route> */}
 
         
       
-      <Route  path='/home/search' >
+      <Route  path='/search' >
           <DisplaySearched
           searches={props.suggestions}
           setFavorite={setFavorite}
           
           />
         </Route>
-        <Route exact path='/home'>
+        <Route exact path='/'>
         <HomePage 
           searchFormValue={searchFormValue}
           onSearch={onSearch}
@@ -365,12 +365,12 @@ function App(props) {
         />
       </Route>
 
-      <Route exact path='/'>
+      {/* <Route exact path='/'>
            <Login
             values={formValues}
             onInputChange={onInputChange}
            />
-      </Route>
+      </Route> */}
      
 
     

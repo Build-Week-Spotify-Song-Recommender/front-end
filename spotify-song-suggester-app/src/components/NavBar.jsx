@@ -85,7 +85,7 @@ const NavBar = () => {
         <MenuTab/>
           <div className={classes.appBar}>
           <Button variant='outlined' color='secondary'>
-        <RouterLink color="secondary" to='/home' className={classes.linkButtons}>
+        <RouterLink color="secondary" to='/' className={classes.linkButtons}>
           
           <Typography variant="h6" color="secondary" noWrap >
             Home
@@ -96,11 +96,11 @@ const NavBar = () => {
         <div className={classes.root}>
         <ButtonGroup color="secondary" aria-label="outlined primary button group">
         <Button>
-        <RouterLink color="secondary"to='/' className={classes.linkButtons}>
+        {/* <RouterLink color="secondary"to='/' className={classes.linkButtons}> */}
           <Typography  variant="h6" color="secondary" noWrap>
             Log In
             </Typography>
-            </RouterLink>
+            {/* </RouterLink> */}
             </Button>
 
             <Button>

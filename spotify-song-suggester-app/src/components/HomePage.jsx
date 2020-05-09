@@ -134,9 +134,9 @@ export default function HomePage(props) {
 
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary">
+                  {/* <Button variant="outlined" color="primary">
                     Secondary action
-                  </Button>
+                  </Button> */}
                 </Grid>
                 <div className='errors'>
                               <h3  className={classes.errorMessages} value={errors.song}>{errors.song}</h3>
