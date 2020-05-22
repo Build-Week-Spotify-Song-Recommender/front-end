@@ -96,8 +96,7 @@ export default function Suggestions( props ) {
          .catch(err => {
               console.log('error', err)
          })
-}, []
-)
+}, [])
 
 if (!favoritesInfo.length) {
   return (
