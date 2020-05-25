@@ -59,6 +59,8 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
   },
   root: {
+    display: "flex",
+    "flex-direction": "column",
     "& > *": {
       margin: theme.spacing(1),
       width: "50ch",

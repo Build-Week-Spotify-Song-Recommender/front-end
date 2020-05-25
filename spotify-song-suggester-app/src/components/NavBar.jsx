@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
+import { connect } from "react-redux";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -66,9 +67,46 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = () => {
+function NavBar(props) {
   const classes = useStyles();
-  return (
+  return props.authenticated ? (
+    <AppBar position="sticky">
+      <Toolbar>
+        <MenuTab />
+        <div className={classes.appBar}>
+          <Button variant="outlined" color="secondary">
+            <RouterLink
+              color="secondary"
+              to="/home"
+              className={classes.linkButtons}
+            >
+              <Typography variant="h6" color="secondary" noWrap>
+                Home
+              </Typography>
+            </RouterLink>
+          </Button>
+          <div className={classes.root}>
+            <ButtonGroup
+              color="secondary"
+              aria-label="outlined primary button group"
+            >
+              <Button>
+                <RouterLink
+                  color="secondary"
+                  to="/home"
+                  className={classes.linkButtons}
+                >
+                  <Typography variant="h6" color="secondary" noWrap>
+                    Log-out
+                  </Typography>
+                </RouterLink>
+              </Button>
+            </ButtonGroup>
+          </div>
+        </div>
+      </Toolbar>
+    </AppBar>
+  ) : (
     <AppBar position="sticky">
       <Toolbar>
         <MenuTab />
@@ -118,6 +156,12 @@ const NavBar = () => {
       </Toolbar>
     </AppBar>
   );
+}
+
+const mapStateToProps = (state) => {
+  return {
+    authenticated: state.authenticated,
+  };
 };
 
-export default NavBar;
+export default connect(mapStateToProps, {})(NavBar);

@@ -80,7 +80,7 @@ function SignIn(props) {
         console.log("response from login", res);
         localStorage.setItem("token", JSON.stringify(res.data.token));
         localStorage.setItem("userId", JSON.stringify(res.data.id));
-        if (res.status(200)) {
+        if (res.status === 200) {
           props.authorization(true);
           history.push("/home");
         }

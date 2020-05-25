@@ -81,13 +81,6 @@ export default function MenuTab() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem style={{ textDecoration: "none", color: "#1DB954" }}>
-          <ListItemIcon>
-            <SendIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Profile" />
-        </StyledMenuItem>
-
         <NavLink
           style={{ textDecoration: "none", color: "#1DB954" }}
           className={classes.linkButtons}
