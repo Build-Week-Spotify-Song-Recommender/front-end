@@ -109,8 +109,6 @@ function Favorites(props) {
     };
   };
 
-  console.log(props.authenticated);
-
   return props.authenticated ? (
     <Container className={classes.cardGrid} maxWidth="md">
       <CssBaseline />
