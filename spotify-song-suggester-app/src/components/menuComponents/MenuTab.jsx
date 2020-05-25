@@ -84,6 +84,19 @@ export default function MenuTab() {
         <NavLink
           style={{ textDecoration: "none", color: "#1DB954" }}
           className={classes.linkButtons}
+          to="/home/"
+        >
+          <StyledMenuItem>
+            <ListItemIcon>
+              <Headset fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Search" />
+          </StyledMenuItem>
+        </NavLink>
+
+        <NavLink
+          style={{ textDecoration: "none", color: "#1DB954" }}
+          className={classes.linkButtons}
           to="/favorites"
         >
           <StyledMenuItem>

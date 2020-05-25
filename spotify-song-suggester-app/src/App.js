@@ -236,6 +236,10 @@ function App(props) {
       <NavBar />
 
       <Switch>
+        <Route exact path="/">
+          <Login values={formValues} onInputChange={onInputChange} />
+        </Route>
+
         <Route exact path="/signup" component={SignUp}>
           <SignUp
             values={formValues}
@@ -244,11 +248,13 @@ function App(props) {
             onInputChange={onInputChange}
           />
         </Route>
+
         <Route exact path="/favorites/suggestions">
           <Suggestions />
         </Route>
+
         <Route exact path="/favorites">
-          <Favorites />
+          <Favorites values={formValues} onInputChange={onInputChange} />
         </Route>
 
         <Route path="/home/search">
@@ -264,10 +270,6 @@ function App(props) {
             disabled={searchFormDisabled}
             initialSearchFormValue={initialSearchFormValue}
           />
-        </Route>
-
-        <Route exact path="/">
-          <Login values={formValues} onInputChange={onInputChange} />
         </Route>
       </Switch>
 

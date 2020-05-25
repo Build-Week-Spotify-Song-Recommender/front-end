@@ -15,6 +15,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import axios from "axios";
 
 import { connect } from "react-redux";
+import Login from "../Login";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -158,9 +160,7 @@ function Favorites(props) {
       </Grid>
     </Container>
   ) : (
-    <div>
-      <h3>No</h3>
-    </div>
+    <Login values={props.values} onInputChange={props.onInputChange} />
   );
 }
 
