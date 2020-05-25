@@ -126,6 +126,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App(props) {
+  const [urlHistoryPath, setUrlHistroryPath] = useState("/home");
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [formDisabled, setFormDisabled] = useState(true);
@@ -221,7 +222,6 @@ function App(props) {
     return axios
       .get(searchUrl)
       .then((res) => {
-        console.log("the results from search", res.data);
         setSuggestions(res.data);
       })
       .catch((err) => {
@@ -237,7 +237,11 @@ function App(props) {
 
       <Switch>
         <Route exact path="/">
-          <Login values={formValues} onInputChange={onInputChange} />
+          <Login
+            urlHistoryPath={urlHistoryPath}
+            values={formValues}
+            onInputChange={onInputChange}
+          />
         </Route>
 
         <Route exact path="/signup" component={SignUp}>
@@ -254,7 +258,12 @@ function App(props) {
         </Route>
 
         <Route exact path="/favorites">
-          <Favorites values={formValues} onInputChange={onInputChange} />
+          <Favorites
+            urlHistoryPath={urlHistoryPath}
+            setUrlHistroryPath={setUrlHistroryPath}
+            values={formValues}
+            onInputChange={onInputChange}
+          />
         </Route>
 
         <Route path="/home/search">

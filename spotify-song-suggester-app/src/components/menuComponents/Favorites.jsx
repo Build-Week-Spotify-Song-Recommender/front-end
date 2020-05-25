@@ -16,7 +16,6 @@ import axios from "axios";
 
 import { connect } from "react-redux";
 import Login from "../Login";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -75,6 +74,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Favorites(props) {
+  props.setUrlHistroryPath("/favorites");
+
   const classes = useStyles();
   const [favoritesInfo, setFavoritesInfo] = useState([]);
 
@@ -99,9 +100,9 @@ function Favorites(props) {
       });
   }, []);
 
-  const addToFavorites = (song) => {
+  const removeFromFavorites = (song) => {
     // event.preventDefault();
-    console.log("songs title from display searched", song);
+    const userId = localStorage.getItem("userId");
 
     const axiosConfig = {
       headers: {
@@ -109,6 +110,17 @@ function Favorites(props) {
         Authorization: JSON.parse(localStorage.getItem("token")),
       },
     };
+
+    console.log(song);
+
+    axios
+      .delete(`http://localhost:4000/api/songs/${userId}`, song, axiosConfig)
+      .then((res) => {
+        console.log("response from remove a song", res.data);
+      })
+      .catch((err) => {
+        console.log("error:", err.message);
+      });
   };
 
   return props.authenticated ? (
@@ -140,7 +152,7 @@ function Favorites(props) {
                   {specificSongInfo.album_name}
                 </Typography>
                 <Button
-                  onClick={() => addToFavorites(specificSongInfo)}
+                  onClick={() => removeFromFavorites(specificSongInfo)}
                   variant="contained"
                   className={classes.addToFavorites}
                 >
@@ -160,7 +172,11 @@ function Favorites(props) {
       </Grid>
     </Container>
   ) : (
-    <Login values={props.values} onInputChange={props.onInputChange} />
+    <Login
+      urlHistoryPath={props.urlHistoryPath}
+      values={props.values}
+      onInputChange={props.onInputChange}
+    />
   );
 }
 

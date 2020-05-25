@@ -103,7 +103,7 @@ function DisplaySearched(props) {
         setFavorite(res.data);
       })
       .catch((err) => {
-        console.log("error in DS", err);
+        console.log("error:", err.message);
       });
   };
 
