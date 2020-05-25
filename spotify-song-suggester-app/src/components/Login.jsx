@@ -127,14 +127,13 @@ function SignIn(props) {
             value={values.password}
             onChange={onInputChange}
           />
-
           <Button
-            // onClick={logginIn}
             type="submit"
             fullWidth
             variant="contained"
             color="inherit"
             className={classes.submit}
+            disabled={disabled}
           >
             Log In
           </Button>

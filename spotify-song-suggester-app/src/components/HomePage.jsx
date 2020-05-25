@@ -119,21 +119,20 @@ export default function HomePage(props) {
             </Typography>
             <form className={classes.root} noValidate autoComplete="off">
               <TextField
-                name="song"
-                onChange={onSearchInputChange}
-                id="outlined-basic"
-                label="Search by Song Title"
-                variant="outlined"
-                value={searchFormValue.song}
-              />
-
-              <TextField
                 name="artist"
                 onChange={onSearchInputChange}
                 id="outlined-basic"
                 label="Search by Artist"
                 variant="outlined"
                 value={searchFormValue.artist}
+              />
+              <TextField
+                name="song"
+                onChange={onSearchInputChange}
+                id="outlined-basic"
+                label="Search by Song Title"
+                variant="outlined"
+                value={searchFormValue.song}
               />
             </form>
             <div className={classes.heroButtons}>
@@ -167,11 +166,7 @@ export default function HomePage(props) {
             </div>
           </Container>
         </div>
-        {/* end hero unit */}
       </main>
-      {/* <Route path='/home/search'>
-      <DisplaySearched />
-      </Route> */}
       <DisplaySearched />
     </React.Fragment>
   );

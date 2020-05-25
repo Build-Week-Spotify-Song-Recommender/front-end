@@ -132,13 +132,13 @@ function App(props) {
   const [searchFormValue, setSearchFormValue] = useState(
     initialSearchFormValue
   );
-  // const [searches, setSearches] = useState({})
   const [searchFormErrors, setSearchFormErrors] = useState(
     initialSearchFormErrors
   );
   const [searchFormDisabled, setSearchFormDisabled] = useState(true);
   const [newSearch, setNewSearch] = useState({});
   const history = useHistory();
+  const [suggestions, setSuggestions] = useState({});
 
   useEffect(() => {
     searchFormSchema.isValid(searchFormValue).then((valid) => {
@@ -211,17 +211,22 @@ function App(props) {
   }, [searchFormValue]);
 
   const onSearch = (e) => {
-    e.preventDefault();
-    //  setNewSearch({
-    //   song: searchFormValue.song.replace('/\s/', '%20'),
-    //   artist: searchFormValue.artist.replace('/\s/', '%20')
-    //  }
-    //  )
-    history.push("/home/search");
-    console.log(newSearch);
-    props.fetchSuggestions(searchFormValue);
-    console.log(props.favorites, "this is favorites");
+    fetchSuggestions(searchFormValue);
     setSearchFormValue(initialSearchFormValue);
+    history.push("/home/search");
+  };
+
+  const fetchSuggestions = (attributes) => {
+    const searchUrl = `https://spotify-song-suggester-4.herokuapp.com/search_something/${attributes.artist}/${attributes.song}`;
+    return axios
+      .get(searchUrl)
+      .then((res) => {
+        console.log("the results from search", res.data);
+        setSuggestions(res.data);
+      })
+      .catch((err) => {
+        console.log("the error", err);
+      });
   };
 
   const classes = useStyles();
@@ -247,8 +252,9 @@ function App(props) {
         </Route>
 
         <Route path="/home/search">
-          <DisplaySearched searches={props.suggestions} />
+          <DisplaySearched searches={suggestions} />
         </Route>
+
         <Route exact path="/home">
           <HomePage
             searchFormValue={searchFormValue}

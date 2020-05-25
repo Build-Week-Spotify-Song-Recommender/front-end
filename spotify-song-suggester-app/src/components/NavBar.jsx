@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
@@ -14,6 +13,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import MenuTab from "./menuComponents/MenuTab";
+
+import { authorization } from "./actions/index";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -69,6 +70,13 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar(props) {
   const classes = useStyles();
+
+  const signOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    props.authorization(false);
+  };
+
   return props.authenticated ? (
     <AppBar position="sticky">
       <Toolbar>
@@ -90,7 +98,7 @@ function NavBar(props) {
               color="secondary"
               aria-label="outlined primary button group"
             >
-              <Button>
+              <Button onClick={signOut}>
                 <RouterLink
                   color="secondary"
                   to="/home"
@@ -164,4 +172,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(NavBar);
+export default connect(mapStateToProps, { authorization })(NavBar);
