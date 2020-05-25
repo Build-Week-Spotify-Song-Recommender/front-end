@@ -11,8 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link as RouterLink, Router } from "react-router-dom";
-import axios from "axios";
-
+import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
@@ -80,11 +79,12 @@ export default function SignIn(props) {
         console.log("response from login", res);
         localStorage.setItem("token", JSON.stringify(res.data.token));
         localStorage.setItem("userId", JSON.stringify(res.data.id));
-        history.push("/home");
       })
       .catch((err) => {
         console.log(err);
       });
+
+    history.push("/home");
   };
 
   return (

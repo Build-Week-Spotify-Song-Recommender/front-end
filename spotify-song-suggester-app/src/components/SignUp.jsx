@@ -18,8 +18,7 @@ import { useHistory } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-import { fetchUser, sendUser } from "./store/actions/SpotifyActions";
-
+import axios from "axios";
 function Copyright(props) {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -77,14 +76,18 @@ function SignUp(props) {
 
   const history = useHistory();
 
-  useEffect(() => {
-    console.log("this is props", props);
-    props.fetchUser();
-  });
-
   const formSubmit = (e) => {
     e.preventDefault();
-    props.sendUser(values);
+    // const userUrl = 'https://spotify-song-suggester-project.herokuapp.com/api/auth/register';
+    const clientURL = "http://localhost:4000/api/auth/register";
+    axios
+      .post(clientURL, values)
+      .then((res) => {
+        console.log("res.data from posting", res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
     history.push("/");
   };
 
@@ -180,12 +183,4 @@ function SignUp(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    users: state.spotify.users,
-    isRendering: state.spotify.isRendering,
-    error: state.spotify.error,
-  };
-};
-
-export default connect(mapStateToProps, { fetchUser, sendUser })(SignUp);
+export default SignUp;

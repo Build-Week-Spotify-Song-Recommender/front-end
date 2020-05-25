@@ -88,7 +88,6 @@ function DisplaySearched(props) {
 
   const addToFavorites = (song) => {
     // event.preventDefault();
-    console.log("songs title from display searched", song);
 
     const axiosConfig = {
       headers: {
@@ -108,8 +107,6 @@ function DisplaySearched(props) {
       });
   };
 
-  console.log("the sample array with suggestions redux", sampleArray);
-  // console.log(searches)
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <CssBaseline />
@@ -161,10 +158,4 @@ function DisplaySearched(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    suggestions: state.spotify.suggestions,
-  };
-};
-
-export default connect(mapStateToProps, {})(DisplaySearched);
+export default DisplaySearched;

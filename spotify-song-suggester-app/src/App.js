@@ -25,11 +25,6 @@ import Suggestions from "./components/menuComponents/Suggestions";
 
 import { connect } from "react-redux";
 
-import {
-  fetchUser,
-  fetchSuggestions,
-} from "./components/store/actions/SpotifyActions";
-
 import { useHistory } from "react-router-dom";
 
 import { v4 as uuid } from "uuid";
@@ -142,7 +137,6 @@ function App(props) {
     initialSearchFormErrors
   );
   const [searchFormDisabled, setSearchFormDisabled] = useState(true);
-  const [favorite, setFavorite] = useState([]);
   const [newSearch, setNewSearch] = useState({});
   const history = useHistory();
 
@@ -249,18 +243,11 @@ function App(props) {
           <Suggestions />
         </Route>
         <Route exact path="/favorites">
-          <Favorites
-            values={formValues}
-            onInputChange={onInputChange}
-            favorite={favorite}
-          />
+          <Favorites />
         </Route>
 
         <Route path="/home/search">
-          <DisplaySearched
-            searches={props.suggestions}
-            setFavorite={setFavorite}
-          />
+          <DisplaySearched searches={props.suggestions} />
         </Route>
         <Route exact path="/home">
           <HomePage
@@ -288,13 +275,4 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    users: state.spotify.users,
-    suggestions: state.spotify.suggestions,
-    isRendering: state.spotify.isRendering,
-    error: state.spotify.error,
-  };
-};
-
-export default connect(mapStateToProps, { fetchUser, fetchSuggestions })(App);
+export default App;

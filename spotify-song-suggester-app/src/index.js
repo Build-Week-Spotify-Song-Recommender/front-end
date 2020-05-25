@@ -11,9 +11,9 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
-import rootReducer from "./components/store/reducers";
+import { reducer } from "./components/store/reducers";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(reducer, applyMiddleware(thunk));
 
 render(
   <ThemeProvider theme={appTheme}>
