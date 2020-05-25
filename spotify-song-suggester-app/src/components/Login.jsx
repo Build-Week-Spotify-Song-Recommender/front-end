@@ -15,6 +15,7 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { authorization } from "./actions/index.js";
 
 function Copyright() {
   return (
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn(props) {
+function SignIn(props) {
   const { values, disabled, errors, onInputChange } = props;
 
   const classes = useStyles();
@@ -84,6 +85,7 @@ export default function SignIn(props) {
         console.log(err);
       });
 
+    props.authorization(true);
     history.push("/home");
   };
 
@@ -152,3 +154,5 @@ export default function SignIn(props) {
     </Container>
   );
 }
+
+export default connect(null, { authorization })(SignIn);

@@ -14,6 +14,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import axios from "axios";
 
+import { connect } from "react-redux";
+
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -70,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Favorites() {
+function Favorites(props) {
   const classes = useStyles();
   const [favoritesInfo, setFavoritesInfo] = useState([]);
 
@@ -107,7 +109,9 @@ export default function Favorites() {
     };
   };
 
-  return (
+  console.log(props.authenticated);
+
+  return props.authenticated ? (
     <Container className={classes.cardGrid} maxWidth="md">
       <CssBaseline />
       <Grid container spacing={7}>
@@ -155,5 +159,17 @@ export default function Favorites() {
         ))}
       </Grid>
     </Container>
+  ) : (
+    <div>
+      <h3>No</h3>
+    </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authenticated: state.authenticated,
+  };
+};
+
+export default connect(mapStateToProps, {})(Favorites);

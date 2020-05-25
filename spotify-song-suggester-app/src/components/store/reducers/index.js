@@ -4,13 +4,12 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "AUTHORIZE":
+    case "AUTHORIZATION":
       return {
-        ...state,
-        isRendering: true,
+        authenticated: action.payload,
       };
 
     default:
-      return state.authenticated;
+      return state;
   }
 };
