@@ -14,6 +14,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import axios from "axios";
 
+import { Route, Switch } from "react-router-dom";
+
 import { connect } from "react-redux";
 import Login from "../Login";
 
@@ -74,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Favorites(props) {
-  props.setUrlHistroryPath("/favorites");
+  props.setUrlHistroryPath("/favorites/login");
 
   const classes = useStyles();
   const [favoritesInfo, setFavoritesInfo] = useState([]);
@@ -104,17 +106,19 @@ function Favorites(props) {
     // event.preventDefault();
     const userId = localStorage.getItem("userId");
 
-    const axiosConfig = {
-      headers: {
+    const headers = {
         "Content-Type": "application/json",
+        Accept: "application/json",
         Authorization: JSON.parse(localStorage.getItem("token")),
-      },
-    };
+      };
 
     console.log(song);
 
     axios
-      .delete(`http://localhost:4000/api/songs/${userId}`, song, axiosConfig)
+      .delete(`http://localhost:4000/api/songs/${userId}`, {
+        headers,
+        data: JSON.stringify(song)
+      })
       .then((res) => {
         console.log("response from remove a song", res.data);
       })
