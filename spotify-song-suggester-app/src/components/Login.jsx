@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn(props) {
-  const { values, disabled, errors, urlHistoryPath,onInputChange } = props;
+  const { values, disabled, errors, onInputChange } = props;
 
   const classes = useStyles();
 
@@ -82,7 +82,7 @@ function SignIn(props) {
         localStorage.setItem("userId", JSON.stringify(res.data.id));
         if (res.status === 200) {
           props.authorization(true);
-          history.push(urlHistoryPath);
+          history.push("/home");
         }
       })
       .catch((err) => {

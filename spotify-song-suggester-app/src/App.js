@@ -126,7 +126,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App(props) {
-  const [urlHistoryPath, setUrlHistroryPath] = useState("/home");
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [formDisabled, setFormDisabled] = useState(true);
@@ -237,11 +236,7 @@ function App(props) {
 
       <Switch>
         <Route exact path="/">
-          <Login
-            urlHistoryPath={urlHistoryPath}
-            values={formValues}
-            onInputChange={onInputChange}
-          />
+          <Login values={formValues} onInputChange={onInputChange} />
         </Route>
 
         <Route exact path="/signup" component={SignUp}>
@@ -258,12 +253,7 @@ function App(props) {
         </Route>
 
         <Route exact path="/favorites">
-          <Favorites
-            urlHistoryPath={urlHistoryPath}
-            setUrlHistroryPath={setUrlHistroryPath}
-            values={formValues}
-            onInputChange={onInputChange}
-          />
+          <Favorites values={formValues} onInputChange={onInputChange} />
         </Route>
 
         <Route path="/home/search">

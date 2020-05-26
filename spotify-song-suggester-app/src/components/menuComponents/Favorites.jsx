@@ -76,8 +76,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Favorites(props) {
-  props.setUrlHistroryPath("/favorites/login");
-
   const classes = useStyles();
   const [favoritesInfo, setFavoritesInfo] = useState([]);
 
@@ -103,21 +101,20 @@ function Favorites(props) {
   }, []);
 
   const removeFromFavorites = (song) => {
-    // event.preventDefault();
     const userId = localStorage.getItem("userId");
 
     const headers = {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: JSON.parse(localStorage.getItem("token")),
-      };
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: JSON.parse(localStorage.getItem("token")),
+    };
 
     console.log(song);
 
     axios
       .delete(`http://localhost:4000/api/songs/${userId}`, {
         headers,
-        data: JSON.stringify(song)
+        data: JSON.stringify(song),
       })
       .then((res) => {
         console.log("response from remove a song", res.data);
@@ -125,6 +122,14 @@ function Favorites(props) {
       .catch((err) => {
         console.log("error:", err.message);
       });
+
+    const indexOfASong = favoritesInfo.indexOf(song);
+
+    const copyOfFovatires = [...favoritesInfo];
+
+    copyOfFovatires.splice(indexOfASong, 1);
+
+    setFavoritesInfo(copyOfFovatires);
   };
 
   return props.authenticated ? (
@@ -176,11 +181,7 @@ function Favorites(props) {
       </Grid>
     </Container>
   ) : (
-    <Login
-      urlHistoryPath={props.urlHistoryPath}
-      values={props.values}
-      onInputChange={props.onInputChange}
-    />
+    <Login values={props.values} onInputChange={props.onInputChange} />
   );
 }
 

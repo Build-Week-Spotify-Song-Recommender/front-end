@@ -77,7 +77,7 @@ const getUrl = "https://api.github.com/users/octocat";
 
 function DisplaySearched(props) {
   const userId = localStorage.getItem("userId");
-  const { searches, setFavorite } = props;
+  const { searches } = props;
 
   const classes = useStyles();
 
@@ -100,7 +100,6 @@ function DisplaySearched(props) {
       .post(`http://localhost:4000/api/songs/${userId}`, song, axiosConfig)
       .then((res) => {
         console.log("the added favorite", res.data);
-        setFavorite(res.data);
       })
       .catch((err) => {
         console.log("error:", err.message);
