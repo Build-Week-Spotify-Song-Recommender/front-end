@@ -269,6 +269,7 @@ function App(props) {
           <DisplaySearched searches={suggestions} />
         </Route>
       </Switch>
+
       <footer className={classes.footer}>
         <Typography variant="subtitle1" align="center" component="p">
           Spotify Song Suggester

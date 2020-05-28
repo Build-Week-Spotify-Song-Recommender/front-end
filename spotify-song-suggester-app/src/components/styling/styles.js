@@ -37,4 +37,60 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "bolder",
     color: "red",
   },
+  appBar: {
+    backgroundColor: "#1DB954",
+  },
+  icon: {
+    marginRight: theme.spacing(2),
+  },
+  heroContent: {
+    backgroundColor: "#1DB954",
+    padding: theme.spacing(8, 0, 6),
+  },
+  heroButtons: {
+    marginTop: theme.spacing(4),
+  },
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+  card: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    padding: "3%",
+    backgroundColor: "#2a2a2a",
+  },
+  cardMedia: {
+    paddingTop: "95.25%", // 16:9
+    border: ".5px solid #2a2a2a",
+    borderRadius: "5px",
+  },
+  cardContent: {
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    padding: "2%",
+  },
+  footer: {
+    backgroundColor: "#1DB954",
+    padding: theme.spacing(6),
+  },
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    "& > * + *": {
+      marginLeft: theme.spacing(0),
+    },
+  },
+  textMargin: {
+    marginTop: "2%",
+    color: "#FFFFFF",
+  },
+  addToFavorites: {
+    marginTop: "5%",
+    backgroundColor: "primary",
+    fontWeight: "bolder",
+  },
 }));
