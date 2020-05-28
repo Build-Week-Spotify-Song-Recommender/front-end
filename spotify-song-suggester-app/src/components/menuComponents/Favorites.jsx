@@ -14,10 +14,10 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import axios from "axios";
 
-import { Route, Switch } from "react-router-dom";
-
 import { connect } from "react-redux";
 import Login from "../Login";
+
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -82,15 +82,8 @@ function Favorites(props) {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
 
-    const axiosConfig = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: JSON.parse(localStorage.getItem("token")),
-      },
-    };
-
-    axios
-      .get(`http://localhost:4000/api/songs/${userId}`, axiosConfig)
+    axiosWithAuth()
+      .get(`/songs/${userId}`)
       .then((response) => {
         console.log(response.data.allSavedSongs);
         setFavoritesInfo(response.data.allSavedSongs);

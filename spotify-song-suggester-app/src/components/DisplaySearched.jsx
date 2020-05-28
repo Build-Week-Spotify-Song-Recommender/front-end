@@ -17,6 +17,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import { axiosWithAuth } from "./utils/axiosWithAuth";
+
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -89,15 +91,8 @@ function DisplaySearched(props) {
   const addToFavorites = (song) => {
     // event.preventDefault();
 
-    const axiosConfig = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: JSON.parse(localStorage.getItem("token")),
-      },
-    };
-
-    axios
-      .post(`http://localhost:4000/api/songs/${userId}`, song, axiosConfig)
+    axiosWithAuth()
+      .post(`/songs/${userId}`, song)
       .then((res) => {
         console.log("the added favorite", res.data);
       })

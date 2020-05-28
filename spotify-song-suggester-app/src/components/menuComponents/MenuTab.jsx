@@ -106,12 +106,20 @@ export default function MenuTab() {
             <ListItemText primary="Favorites" />
           </StyledMenuItem>
         </NavLink>
-        <StyledMenuItem style={{ textDecoration: "none", color: "#1DB954" }}>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Update User" />
-        </StyledMenuItem>
+
+        <NavLink
+          style={{ textDecoration: "none", color: "#1DB954" }}
+          className={classes.linkButtons}
+          to="/update"
+        >
+          <StyledMenuItem style={{ textDecoration: "none", color: "#1DB954" }}>
+            <ListItemIcon>
+              <InboxIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Update User" />
+          </StyledMenuItem>
+        </NavLink>
+
         <Link
           target="_blank"
           href="https://github.com/Build-Week-Spotify-Song-Recommender"

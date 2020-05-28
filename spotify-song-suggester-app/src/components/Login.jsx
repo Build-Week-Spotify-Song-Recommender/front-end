@@ -14,7 +14,7 @@ import { Link as RouterLink, Router } from "react-router-dom";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from "axios";
 import { authorization } from "./actions/index.js";
 
 function Copyright() {
@@ -74,8 +74,11 @@ function SignIn(props) {
   const logginIn = (e) => {
     e.preventDefault();
 
-    axiosWithAuth()
-      .post("/auth/login", values)
+    // const userUrl = 'https://spotify-song-suggester-project.herokuapp.com/api/auth/login';
+    const clientURL = "http://localhost:4000/api/auth/login";
+
+    axios
+      .post(clientURL, values)
       .then((res) => {
         console.log("response from login", res);
         localStorage.setItem("token", JSON.stringify(res.data.token));

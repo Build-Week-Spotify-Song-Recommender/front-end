@@ -7,7 +7,7 @@ import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import DisplaySearched from "./components/DisplaySearched";
-import UpdateUser from "./components/menuComponents/UpdateUser";
+import UpdateUser from "./components/UpdateUser";
 
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -21,7 +21,6 @@ import Link from "@material-ui/core/Link";
 import MenuTab from "./components/menuComponents/MenuTab";
 import Favorites from "./components/menuComponents/Favorites";
 import NavBar from "./components/NavBar";
-import Suggestions from "./components/menuComponents/Suggestions";
 
 import { connect } from "react-redux";
 
@@ -233,7 +232,6 @@ function App(props) {
     <div className="App">
       <CssBaseline />
       <NavBar />
-
       <Switch>
         <Route exact path="/">
           <Login values={formValues} onInputChange={onInputChange} />
@@ -248,16 +246,12 @@ function App(props) {
           />
         </Route>
 
-        <Route exact path="/favorites/suggestions">
-          <Suggestions />
+        <Route path="/update">
+          <UpdateUser />
         </Route>
 
         <Route exact path="/favorites">
           <Favorites values={formValues} onInputChange={onInputChange} />
-        </Route>
-
-        <Route path="/home/search">
-          <DisplaySearched searches={suggestions} />
         </Route>
 
         <Route exact path="/home">
@@ -270,8 +264,11 @@ function App(props) {
             initialSearchFormValue={initialSearchFormValue}
           />
         </Route>
-      </Switch>
 
+        <Route path="/home/search">
+          <DisplaySearched searches={suggestions} />
+        </Route>
+      </Switch>
       <footer className={classes.footer}>
         <Typography variant="subtitle1" align="center" component="p">
           Spotify Song Suggester
