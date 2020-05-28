@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -18,62 +17,7 @@ import { connect } from "react-redux";
 import Login from "../Login";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    backgroundColor: "#1DB954",
-    padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    padding: "3%",
-    backgroundColor: "#2a2a2a",
-  },
-  cardMedia: {
-    paddingTop: "95.25%", // 16:9
-    border: ".5px solid #2a2a2a",
-    borderRadius: "5px",
-  },
-  cardContent: {
-    flexGrow: 1,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    padding: "2%",
-  },
-  footer: {
-    backgroundColor: "#1DB954",
-    padding: theme.spacing(6),
-  },
-  root: {
-    display: "flex",
-    justifyContent: "center",
-    "& > * + *": {
-      marginLeft: theme.spacing(0),
-    },
-  },
-  textMargin: {
-    marginTop: "2%",
-    color: "#FFFFFF",
-  },
-  addToFavorites: {
-    marginTop: "5%",
-    backgroundColor: "primary",
-    fontWeight: "bolder",
-  },
-}));
+import { useStyles } from "../styling/styles";
 
 function Favorites(props) {
   const classes = useStyles();
