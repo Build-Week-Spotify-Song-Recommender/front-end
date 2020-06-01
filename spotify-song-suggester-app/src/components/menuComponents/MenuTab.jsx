@@ -1,41 +1,40 @@
-import React from 'react';
-import Link from '@material-ui/core/Link';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
-import Headset from '@material-ui/icons/Headset';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import { Link as RouterLink, NavLink } from 'react-router-dom'
+import React from "react";
+import Link from "@material-ui/core/Link";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import DraftsIcon from "@material-ui/icons/Drafts";
+import SendIcon from "@material-ui/icons/Send";
+import Headset from "@material-ui/icons/Headset";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import { Link as RouterLink, NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   linkButtons: {
-    textDecoration: 'none',
-    color: 'secondary'
+    textDecoration: "none",
+    color: "secondary",
   },
 }));
 
-
 const StyledMenu = withStyles({
   paper: {
-    border: '1px solid #d3d4d5',
+    border: "1px solid #d3d4d5",
   },
 })((props) => (
   <Menu
     elevation={0}
     getContentAnchorEl={null}
     anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'center',
+      vertical: "bottom",
+      horizontal: "center",
     }}
     transformOrigin={{
-      vertical: 'top',
-      horizontal: 'center',
+      vertical: "top",
+      horizontal: "center",
     }}
     {...props}
   />
@@ -43,14 +42,13 @@ const StyledMenu = withStyles({
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
-    '&:focus': {
+    "&:focus": {
       backgroundColor: theme.palette.primary.main,
-      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: theme.palette.common.white,
       },
     },
   },
-  
 }))(MenuItem);
 
 export default function MenuTab() {
@@ -74,7 +72,7 @@ export default function MenuTab() {
         color="primary"
         onClick={handleClick}
       >
-       <Headset />
+        <Headset />
       </Button>
       <StyledMenu
         id="customized-menu"
@@ -83,23 +81,49 @@ export default function MenuTab() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem style={{ textDecoration: 'none', color:'#1DB954'}}>
-          <ListItemIcon>
-            <SendIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Profile" />
-        </StyledMenuItem>
+        <NavLink
+          style={{ textDecoration: "none", color: "#1DB954" }}
+          className={classes.linkButtons}
+          to="/home/"
+        >
+          <StyledMenuItem>
+            <ListItemIcon>
+              <Headset fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Search" />
+          </StyledMenuItem>
+        </NavLink>
 
-        <NavLink style={{ textDecoration: 'none', color:'#1DB954'}} className={classes.linkButtons} to='/home/'>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <Headset fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Search" />
-        </StyledMenuItem>
-      </NavLink>
+        <NavLink
+          style={{ textDecoration: "none", color: "#1DB954" }}
+          className={classes.linkButtons}
+          to="/favorites"
+        >
+          <StyledMenuItem>
+            <ListItemIcon>
+              <DraftsIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Favorites" />
+          </StyledMenuItem>
+        </NavLink>
 
-        <Link target='_blank' href='https://github.com/Build-Week-Spotify-Song-Recommender'>
+        <NavLink
+          style={{ textDecoration: "none", color: "#1DB954" }}
+          className={classes.linkButtons}
+          to="/update"
+        >
+          <StyledMenuItem style={{ textDecoration: "none", color: "#1DB954" }}>
+            <ListItemIcon>
+              <InboxIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Update User" />
+          </StyledMenuItem>
+        </NavLink>
+
+        <Link
+          target="_blank"
+          href="https://github.com/Build-Week-Spotify-Song-Recommender"
+        >
           <StyledMenuItem>
             <ListItemIcon>
               <GitHubIcon fontSize="small" />
@@ -107,20 +131,6 @@ export default function MenuTab() {
             <ListItemText primary="Github" />
           </StyledMenuItem>
         </Link>
-        <NavLink  style={{ textDecoration: 'none', color:'#1DB954'}} className={classes.linkButtons} to='/favorites'>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <DraftsIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Favorites" />
-        </StyledMenuItem>
-        </NavLink>
-        <StyledMenuItem style={{ textDecoration: 'none', color:'#1DB954'}}>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Update User" />
-        </StyledMenuItem>
       </StyledMenu>
     </div>
   );

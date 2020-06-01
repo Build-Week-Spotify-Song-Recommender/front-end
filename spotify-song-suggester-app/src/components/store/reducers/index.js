@@ -1,6 +1,15 @@
-import { combineReducers } from 'redux'; 
-import { spotifyReducer as spotify } from './SpotifyReducer'; 
+const initialState = {
+  authenticated: false,
+};
 
-export default combineReducers({
-    spotify
-})
+export const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "AUTHORIZATION":
+      return {
+        authenticated: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
