@@ -9,7 +9,7 @@ export const axiosWithAuth = () => {
       Accept: "application/json",
       Authorization: token,
     },
-    // baseURL: 'https://spotify-song-suggester-project.herokuapp.com/api'
-    baseURL: "http://localhost:4000/api",
+    baseURL: "https://spotify-song-suggester-project.herokuapp.com/api",
+    //baseURL: "http://localhost:4000/api",
   });
 };

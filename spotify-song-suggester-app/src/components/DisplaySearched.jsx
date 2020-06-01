@@ -9,17 +9,9 @@ import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
-import axios from "axios";
-import CircularProgress from "@material-ui/core/CircularProgress";
-
-import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
 
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import { useStyles } from "./styling/styles";
-
-const getUrl = "https://api.github.com/users/octocat";
 
 function DisplaySearched(props) {
   const userId = localStorage.getItem("userId");

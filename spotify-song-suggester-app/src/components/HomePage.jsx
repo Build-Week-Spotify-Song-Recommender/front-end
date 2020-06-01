@@ -14,9 +14,6 @@ import { Route, Switch } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import logo from "./logo/logo.png";
-import { NavLink } from "react-router-dom";
-import * as yup from "yup";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

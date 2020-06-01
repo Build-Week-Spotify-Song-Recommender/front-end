@@ -5,13 +5,9 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { connect } from "react-redux";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
 import MenuTab from "./menuComponents/MenuTab";
 
 import { authorization } from "./actions/index";

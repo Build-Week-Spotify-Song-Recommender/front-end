@@ -29,8 +29,9 @@ function SignUp(props) {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    // const userUrl = 'https://spotify-song-suggester-project.herokuapp.com/api/auth/register';
-    const clientURL = "http://localhost:4000/api/auth/register";
+    const clientURL =
+      "https://spotify-song-suggester-project.herokuapp.com/api/auth/register";
+    //const clientURL = "http://localhost:4000/api/auth/register";
     axios
       .post(clientURL, values)
       .then((res) => {
