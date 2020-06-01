@@ -162,7 +162,7 @@ const UpdateUser = (props) => {
                 required
                 fullWidth
                 name="newPassword"
-                label="Repeat Password"
+                label="New Password"
                 type="password"
                 id="newPassword"
                 value={values.newPassword}

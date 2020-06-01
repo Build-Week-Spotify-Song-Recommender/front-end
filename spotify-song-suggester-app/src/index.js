@@ -12,8 +12,13 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import { reducer } from "./components/store/reducers";
+import {authorization } from './components/actions/index';
 
 const store = createStore(reducer, applyMiddleware(thunk));
+
+if(localStorage.token){
+  store.dispatch(authorization(true));
+}
 
 render(
   <ThemeProvider theme={appTheme}>
