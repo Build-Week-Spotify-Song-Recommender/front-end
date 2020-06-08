@@ -30,7 +30,6 @@ function SignIn(props) {
 
     const clientURL =
       "https://spotify-song-suggester-project.herokuapp.com/api/auth/login";
-    //const clientURL = "http://localhost:4000/api/auth/login";
 
     axios
       .post(clientURL, values)
@@ -40,7 +39,7 @@ function SignIn(props) {
         localStorage.setItem("userId", JSON.stringify(res.data.id));
         if (res.status === 200) {
           props.authorization(true);
-          history.push("/");
+          history.push("/home");
         }
       })
       .catch((err) => {
