@@ -14,7 +14,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import axios from "axios";
 
 import { connect } from "react-redux";
-import Login from "../Login";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useStyles } from "../styling/styles";
@@ -24,6 +23,7 @@ import { Redirect } from "react-router-dom";
 function Favorites(props) {
   const classes = useStyles();
   const [favoritesInfo, setFavoritesInfo] = useState([]);
+  const urlPath = "/favorites";
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -120,7 +120,7 @@ function Favorites(props) {
       </Grid>
     </Container>
   ) : (
-      <Redirect to={{ pathname: "/" }} />
+    <Redirect to={{ pathname: "/" }} />
   );
 }
 

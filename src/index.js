@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import appTheme from "./themes";
 
@@ -12,11 +12,11 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import { reducer } from "./components/store/reducers";
-import {authorization } from './components/actions/index';
+import { authorization } from "./components/actions/index";
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
-if(localStorage.token){
+if (localStorage.token) {
   store.dispatch(authorization(true));
 }
 

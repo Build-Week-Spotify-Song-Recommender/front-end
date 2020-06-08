@@ -40,7 +40,7 @@ function SignIn(props) {
         localStorage.setItem("userId", JSON.stringify(res.data.id));
         if (res.status === 200) {
           props.authorization(true);
-          history.push("/home");
+          history.push("/");
         }
       })
       .catch((err) => {
