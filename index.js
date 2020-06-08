@@ -1,18 +1,18 @@
 import React from "react";
 import { render } from "react-dom";
 import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import App from "./src/App";
+import * as serviceWorker from "./src/serviceWorker";
 import { HashRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
-import appTheme from "./themes";
+import appTheme from "./src/themes";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
-import { reducer } from "./components/store/reducers";
-import { authorization } from "./components/actions/index";
+import { reducer } from "./src/components/store/reducers";
+import { authorization } from "./src/components/actions/index";
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
