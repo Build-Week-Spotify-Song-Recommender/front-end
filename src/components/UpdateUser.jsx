@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import { useStyles } from "./styling/styles";
 import { Copyright } from "./copyRight/copyRightComponent";
-
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Headset from "@material-ui/icons/Headset";
@@ -15,7 +16,6 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import { Link as RouterLink } from "react-router-dom";
 
 import * as yup from "yup";
 
@@ -206,9 +206,7 @@ const UpdateUser = (props) => {
       </Box>
     </Container>
   ) : (
-    <div>
-      <h2>Not authenticated</h2>
-    </div>
+    <Redirect to={{ pathname: "/" }} />
   );
 };
 

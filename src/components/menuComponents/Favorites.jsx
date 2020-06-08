@@ -19,6 +19,8 @@ import Login from "../Login";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useStyles } from "../styling/styles";
 
+import { Redirect } from "react-router-dom";
+
 function Favorites(props) {
   const classes = useStyles();
   const [favoritesInfo, setFavoritesInfo] = useState([]);
@@ -118,7 +120,7 @@ function Favorites(props) {
       </Grid>
     </Container>
   ) : (
-    <Login values={props.values} onInputChange={props.onInputChange} />
+      <Redirect to={{ pathname: "/" }} />
   );
 }
 
